@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+/* 顶部导航栏 */
+.navbar {
+    font-size: 35px;
+    text-align: center;
+    background-color: rgb(173, 227, 247);
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    padding: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 展示图片 */
+.container {
+    margin: auto;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* 左侧栏 */
+.left {
+    flex: 0 0 35%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 左侧栏内容 */
+.left h1 {
+
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 左侧栏输入框 */
+.left input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* 左侧栏段落 */
+.left p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* 按钮网格 */
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    animation: fadeIn 1s ease;
+}
+
+/* 按钮样式 */
+.clickbutton {
+    padding: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* 按钮悬停效果 */
+.clickbutton:hover {
+    text-align: center;
+    font-weight: bold;
+    font-size: medium;
+    background-color: rgb(226, 241, 247);
+    border-radius: 3px;
+    transform: translateY(-3px);
+}
+
+/* 右侧栏 */
+.right {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+/* 右侧栏三级标题格式 */
+.right h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* 右侧栏 */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container.search-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* 图片显示面板 */
+.panel {
+    width: 300px;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    margin: 0 10px;
+    position: relative;
+}
+
+/* 图片悬停操作 */
+.panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/*中间的图片面板大小*/
+.panel.middle {
+    flex: 50;
+    animation: scaleIn 0.5s ease;
+}
+
+/*左边的图片面板大小*/
+.panel.left {
+    flex: 10;
+    animation: slideInLeft 0.5s ease;
+}
+
+/*右边的图片面板大小*/
+.panel.right {
+    flex: 10;
+    animation: slideInRight 0.5s ease;
+}
