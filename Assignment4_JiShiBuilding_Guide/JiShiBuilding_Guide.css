@@ -144,3 +144,27 @@
     flex: 10;
     animation: slideInRight 0.5s ease;
 }
+
+
+/* 房间详细信息 */
+#room-details {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+    color: black;
+    text-align: left;
+    padding: 20px;
+    background-color: #fff;
+    margin-top: 60px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#room-details h4 {
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#room-details p {
+    margin: 5px 0;
+}

@@ -6,6 +6,7 @@ fetch('./rooms.json')
     .then(data => {
         JishiRooms = data.rooms;
         updateUI(currentImage); // 初始化 UI
+        showRoomDetails(JishiRooms[currentImage]); // 初始化详细信息
     })
     .catch(error => {
         console.error('Error loading rooms.json:', error);
@@ -21,7 +22,7 @@ const imageOrder = [
 ];
 
 // 当前图片：软件学院招牌401
-let currentImage = 33;
+let currentImage = 0;
 // 找到页面预留的图片容器
 const container = document.querySelector('.image-container');
 
@@ -52,8 +53,9 @@ for (let i = 0; i < collectionButton.length; i++) {
 // 按键快捷键绑定的函数
 function buttonPressed(i) {
     container.innerHTML = "";
-    currentImage = (i - 1 + JishiRooms.length) % JishiRooms.length;
+    currentImage = i;
     updateUI(currentImage);
+    showRoomDetails(JishiRooms[currentImage]);
 }
 
 // 左箭头按键绑定的函数
@@ -61,6 +63,7 @@ function leftPressed() {
     container.innerHTML = "";
     currentImage = (currentImage + JishiRooms.length - 1) % JishiRooms.length;
     updateUI(currentImage);
+    showRoomDetails(JishiRooms[currentImage]);
 }
 
 // 右箭头按键绑定的函数
@@ -68,6 +71,22 @@ function rightPressed() {
     container.innerHTML = "";
     currentImage = (currentImage + 1) % JishiRooms.length;
     updateUI(currentImage);
+    showRoomDetails(JishiRooms[currentImage]);
+}
+
+// 显示房间详细信息的函数
+function showRoomDetails(room) {
+    const detailsContainer = document.getElementById('room-details');
+    if (detailsContainer) {
+        detailsContainer.innerHTML = `
+            <h4>房间号: ${room.number}</h4>
+            <p>描述: ${room.descriptions}</p>
+            <p>类型: ${room.type}</p>
+            <p>关键词: ${room.key_words.join(', ')}</p>
+        `;
+    } else {
+        console.error('Details container not found!');
+    }
 }
 
 // 以currentImage为传入参数更新container中的图片显示UI
@@ -80,13 +99,23 @@ function updateUI(currentImage) {
         const panel = document.createElement('div');
         panel.classList.add('panel', data.imageLocation);
 
-        const roomIndex = (currentImage + index) % JishiRooms.length;
+        const roomIndex = (currentImage + index - 1 + JishiRooms.length) % JishiRooms.length;
         const room = JishiRooms[roomIndex];
 
         panel.style.backgroundImage = room.image;
         panel.innerHTML = `
             <h3 style="font-family: 'Times New Roman'; margin-top: 420px; opacity: 1; text-align: center; font-size: 36px;">${room.number}</h3>
-            <p style="font-family: 'Times New Roman'; margin-top: 60px; opacity: 1; text-align: center; font-size: 18px; color : black">${room.descriptions}</p>`;
+            <p style="font-family: 'Times New Roman'; margin-top: -15px; opacity: 1; text-align: center; font-size: 18px; color: black">${room.descriptions}</p>`;
+
+        // 为左右图片添加点击事件
+        if (data.imageLocation === 'left' || data.imageLocation === 'right') {
+            panel.addEventListener('click', () => {
+                container.innerHTML = "";
+                currentImage = roomIndex;
+                updateUI(currentImage);
+                showRoomDetails(room);
+            });
+        }
 
         container.appendChild(panel);
     });
@@ -150,7 +179,17 @@ function searchRooms() {
                 panel.classList.add('panel');
                 panel.style.backgroundImage = room.image;
                 panel.innerHTML = `
-                    <h3 style="font-family: 'Times New Roman'; margin-top: 420px; opacity: 1; text-align: center; font-size: 36px;">${room.number}</h3>`;
+                    <h3 style="font-family: 'Times New Roman'; margin-top: 420px; opacity: 1; text-align: center; font-size: 36px;">${room.number}</h3>
+                    <p style="font-family: 'Times New Roman'; margin-top: -15px; opacity: 1; text-align: center; font-size: 18px; color: black">${room.descriptions}</p>`;
+
+                // 为搜索结果图片添加点击事件
+                panel.addEventListener('click', () => {
+                    container.innerHTML = "";
+                    currentImage = JishiRooms.findIndex(r => r.number === room.number);
+                    updateUI(currentImage); // 确保选中房间显示在中间
+                    showRoomDetails(room);
+                });
+
                 container.appendChild(panel);
             });
         } else {
@@ -161,5 +200,6 @@ function searchRooms() {
         }
     } else {
         updateUI(currentImage);
+        showRoomDetails(JishiRooms[currentImage]);
     }
 }
