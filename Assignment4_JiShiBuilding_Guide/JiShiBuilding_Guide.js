@@ -52,7 +52,7 @@ for (let i = 0; i < collectionButton.length; i++) {
 // 按键快捷键绑定的函数
 function buttonPressed(i) {
     container.innerHTML = "";
-    currentImage = i;
+    currentImage = (i - 1 + JishiRooms.length) % JishiRooms.length;
     updateUI(currentImage);
 }
 
@@ -86,7 +86,7 @@ function updateUI(currentImage) {
         panel.style.backgroundImage = room.image;
         panel.innerHTML = `
             <h3 style="font-family: 'Times New Roman'; margin-top: 420px; opacity: 1; text-align: center; font-size: 36px;">${room.number}</h3>
-            <p style="font-family: 'Times New Roman'; margin-top: -40px; opacity: 1; text-align: center; font-size: 18px;">${room.descriptions}</p>`;
+            <p style="font-family: 'Times New Roman'; margin-top: 60px; opacity: 1; text-align: center; font-size: 18px; color : black">${room.descriptions}</p>`;
 
         container.appendChild(panel);
     });
@@ -94,13 +94,12 @@ function updateUI(currentImage) {
     container.appendChild(rightArrow);
 }
 
-// 模糊匹配函数，模仿 fuzzywuzzy 的 partial_ratio
+// 简单子字符串匹配得分
 function partialRatio(str1, str2) {
     str1 = str1.toLowerCase();
     str2 = str2.toLowerCase();
     if (!str1 || !str2) return 0;
 
-    // 简单子字符串匹配得分
     let maxScore = 0;
     const shorter = str1.length < str2.length ? str1 : str2;
     const longer = str1.length < str2.length ? str2 : str1;
@@ -117,7 +116,7 @@ function partialRatio(str1, str2) {
     return Math.round(maxScore);
 }
 
-// 关键词搜索函数，模仿 Python 的 search_rooms
+// 关键词搜索函数
 function searchRooms() {
     container.innerHTML = "";
     container.classList.add('search-results');
