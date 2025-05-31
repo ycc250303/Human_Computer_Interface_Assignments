@@ -26,6 +26,19 @@ let currentImage = 0;
 // 找到页面预留的图片容器
 const container = document.querySelector('.image-container');
 
+document.addEventListener('mousemove', (e) => {
+    const particle = document.createElement('div');
+    particle.classList.add('mouse-follower');
+    document.body.appendChild(particle);
+
+    particle.style.left = `${e.clientX}px`;
+    particle.style.top = `${e.clientY}px`;
+
+    setTimeout(() => {
+        particle.remove();
+    }, 1000); 
+});
+
 // 左箭头
 const leftArrow = document.createElement('div');
 leftArrow.innerHTML = `🢀`;
@@ -80,7 +93,8 @@ function showRoomDetails(room) {
     if (detailsContainer) {
         detailsContainer.innerHTML = `
             <h4>房间号: ${room.number}</h4>
-            <p>描述: ${room.descriptions}</p>
+            <p>标题: ${room.title}</p>
+            <p>描述: ${room.description}</p>
             <p>类型: ${room.type}</p>
             <p>关键词: ${room.key_words.join(', ')}</p>
         `;
@@ -105,8 +119,7 @@ function updateUI(currentImage) {
         panel.style.backgroundImage = room.image;
         panel.innerHTML = `
             <h3 style="font-family: 'Times New Roman'; margin-top: 420px; opacity: 1; text-align: center; font-size: 36px;">${room.number}</h3>
-            <p style="font-family: 'Times New Roman'; margin-top: -15px; opacity: 1; text-align: center; font-size: 18px; color: black">${room.descriptions}</p>`;
-
+            <p style="font-family: 'Times New Roman'; margin-top: -15px; opacity: 1; text-align: center; font-size: 18px; color: black">${room.title}</p>`;
         // 为左右图片添加点击事件
         if (data.imageLocation === 'left' || data.imageLocation === 'right') {
             panel.addEventListener('click', () => {
@@ -158,10 +171,11 @@ function searchRooms() {
         JishiRooms.forEach(room => {
             let scores = [];
             queries.forEach(q => {
-                const nameScore = partialRatio(q, room.descriptions);
+                const titleScore = partialRatio(q, room.title); // Search in title
+                const descriptionScore = partialRatio(q, room.description); // Search in description
                 const keywordScores = room.key_words.map(kw => partialRatio(q, kw));
                 const maxKeywordScore = keywordScores.length ? Math.max(...keywordScores) : 0;
-                const maxScore = Math.max(nameScore, maxKeywordScore);
+                const maxScore = Math.max(titleScore, descriptionScore, maxKeywordScore); // Consider all fields
                 scores.push(maxScore);
             });
             const avgScore = scores.length ? scores.reduce((a, b) => a + b, 0) / scores.length : 0;
@@ -180,7 +194,8 @@ function searchRooms() {
                 panel.style.backgroundImage = room.image;
                 panel.innerHTML = `
                     <h3 style="font-family: 'Times New Roman'; margin-top: 420px; opacity: 1; text-align: center; font-size: 36px;">${room.number}</h3>
-                    <p style="font-family: 'Times New Roman'; margin-top: -15px; opacity: 1; text-align: center; font-size: 18px; color: black">${room.descriptions}</p>`;
+                    <p style="font-family: 'Times New Roman'; margin-top: -15px; opacity: 1; text-align: center; font-size: 18px; color: black">${room.title}</p>
+                    <p style="font-family: 'Times New Roman'; opacity: 1; text-align: center; font-size: 14px; color: black; margin-top: 5px;">${room.description}</p>`;
 
                 // 为搜索结果图片添加点击事件
                 panel.addEventListener('click', () => {
