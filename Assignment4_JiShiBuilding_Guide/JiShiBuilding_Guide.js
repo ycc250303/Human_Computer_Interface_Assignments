@@ -36,7 +36,7 @@ document.addEventListener('mousemove', (e) => {
 
     setTimeout(() => {
         particle.remove();
-    }, 1000); 
+    }, 1000);
 });
 
 // 左箭头
@@ -93,10 +93,9 @@ function showRoomDetails(room) {
     if (detailsContainer) {
         detailsContainer.innerHTML = `
             <h4>房间号: ${room.number}</h4>
-            <p>标题: ${room.title}</p>
-            <p>描述: ${room.description}</p>
-            <p>类型: ${room.type}</p>
-            <p>关键词: ${room.key_words.join(', ')}</p>
+            <p>${room.title}</p>
+            <p>${room.description}</p>
+
         `;
     } else {
         console.error('Details container not found!');

@@ -1,15 +1,16 @@
 @charset "UTF-8";
 
-html, body {
-    height: 100%; 
+html,
+body {
+    height: 100%;
     margin: 0;
     padding: 0;
 }
 
 body {
-    background: linear-gradient(to bottom, #e0f2f7, #f7f9fc); 
-    background-attachment: fixed; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: linear-gradient(to bottom, #e0f2f7, #f7f9fc);
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
 }
 
@@ -45,8 +46,8 @@ body {
 
 /* 左侧栏 */
 .left {
-    flex: 0 0 380px;
-    max-width: 380px;
+    flex: 0 0 650px;
+    max-width: 650px;
     padding: 25px;
     background-color: #fff;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -170,11 +171,11 @@ body {
 /* 右侧栏三级标题格式 */
 .right h3 {
     font-size: 36px;
-    margin-bottom: 0px; 
+    margin-bottom: 0px;
     text-align: center;
     color: #333;
     border-bottom: 2px solid #ddd;
-    padding-bottom: 5px; 
+    padding-bottom: 5px;
 }
 
 /* 右侧栏图片容器 */
@@ -196,13 +197,13 @@ body {
 
 /* 图片显示面板 */
 .panel {
-    width: 250px; 
-    height: 350px; 
+    width: 250px;
+    height: 350px;
     background-size: cover;
     background-position: center;
     color: white;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-    margin: 0 8px; 
+    margin: 0 8px;
     position: relative;
     border-radius: 10px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
@@ -211,8 +212,8 @@ body {
 
 /* 图片悬停操作 */
 .panel:hover {
-    transform: translateY(-8px) scale(1.02); 
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.35); 
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.35);
 }
 
 /*中间的图片面板大小*/
@@ -238,6 +239,7 @@ body {
         transform: scale(0.8);
         opacity: 0;
     }
+
     to {
         transform: scale(1);
         opacity: 1;
@@ -249,6 +251,7 @@ body {
         transform: translateX(-100px);
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;
@@ -260,6 +263,7 @@ body {
         transform: translateX(100px);
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;
@@ -269,10 +273,10 @@ body {
 /* 房间详细信息 */
 #room-details {
     font-family: 'Open Sans', sans-serif;
-    font-size: 16px; 
+    font-size: 16px;
     color: #333;
     text-align: left;
-    padding: 20px; 
+    padding: 20px;
     background-color: #fff;
     margin-top: 0;
     border-radius: 12px;
@@ -300,17 +304,17 @@ body {
 /* 鼠标跟随样式 */
 .mouse-follower {
     position: fixed;
-    width: 15px; 
+    width: 15px;
     height: 15px;
     background: radial-gradient(circle, rgba(0, 123, 255, 0.7) 0%, rgba(0, 123, 255, 0) 70%);
     border-radius: 50%;
-    pointer-events: none; 
-    transform: translate(-50%, -50%); 
+    pointer-events: none;
+    transform: translate(-50%, -50%);
     opacity: 1;
     animation: fade-out-shrink 1s forwards;
     z-index: 9999;
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
-    filter: blur(3px); 
+    filter: blur(3px);
 }
 
 @keyframes fade-out-shrink {
@@ -318,6 +322,7 @@ body {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
+
     100% {
         opacity: 0;
         transform: translate(-50%, -50%) scale(0);

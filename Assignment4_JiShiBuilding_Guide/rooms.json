@@ -38,7 +38,7 @@
     {"number": "448-2", "title": "吴晓培老师的副书记办公室🧑", "description": "吴晓培副书记的办公区域，负责学院的重要行政管理。", "image": "url('./figures/448-2.jpg')", "type": "办公室", "key_words": ["448", "副书记", "吴晓培", "办公室"]},
     {"number": "448-3", "title": "宋井宽老师的院务助理办公室🧑", "description": "宋井宽院务助理的办公区域，协助院长处理各项事务。", "image": "url('./figures/448-3.jpg')", "type": "办公室", "key_words": ["448", "院务助理", "宋井宽", "办公室"]},
     {"number": "450L", "title": "熊岚老师的党委书记办公室👩", "description": "熊岚党委书记的办公区域，领导学院党建工作。", "image": "url('./figures/450L.jpg')", "type": "办公室", "key_words": ["450L", "党委书记", "熊岚", "办公室"]},
-    {"number": "450R", "title": "邓申涛老师的院长办公室🧑", "description": "邓申涛院长的办公区域，负责学院的全面管理和发展。", "image": "url('./figures/450R.jpg')", "type": "办公室", "key_words": ["450R", "院长", "邓申涛", "办公室"]},
+    {"number": "450R", "title": "申恒涛老师的院长办公室🧑", "description": "申恒涛院长的办公区域，负责学院的全面管理和发展。", "image": "url('./figures/450R.jpg')", "type": "办公室", "key_words": ["450R", "院长", "邓申涛", "办公室"]},
     {"number": "451-1", "title": "王成老师的副院长办公室🧑", "description": "王成副院长的办公区域，负责分管学院特定领域的事务。", "image": "url('./figures/451-1.jpg')", "type": "办公室", "key_words": ["451", "副院长", "王成", "办公室"]},
     {"number": "451-2", "title": "何良华老师的副院长办公室🧑", "description": "何良华副院长的办公区域，协助院长处理学院日常事务。", "image": "url('./figures/451-2.jpg')", "type": "办公室", "key_words": ["451", "副院长", "何良华", "办公室"]},
     {"number": "451-3", "title": "张林老师的副院长办公室🧑", "description": "张林副院长的办公区域，负责协调和管理学院多项工作。", "image": "url('./figures/451-3.jpg')", "type": "办公室", "key_words": ["451", "副院长", "张林", "办公室"]},
