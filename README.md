@@ -1,4 +1,4 @@
-# Human_Computer_Interface_Assignments
+# Human_Computer_Interface_Course_Assignments
 
 ## 同济大学2024-2025用户交互技术课程作业
 
